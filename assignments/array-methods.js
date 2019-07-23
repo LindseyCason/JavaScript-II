@@ -56,28 +56,79 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
+
+runners.forEach(function(item){
+   fullName.push(item.first_name + " " + item.last_name);
+    }
+);
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
 let allCaps = [];
+
+runners.map(function(item){
+
+
+    allCaps.push(item.first_name.toUpperCase())
+});
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 let largeShirts = [];
+
+runners.filter(function(item){
+    if(item.shirt_size === "L"){;
+    largeShirts.push(item.first_name + " " + item.last_name)
+}})
+
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
+
+ticketPriceTotal = runners.reduce(function(accumulator, currentValue){
+    return accumulator + currentValue.donation;
+}, 0)
+
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+//We need company names for a sponsor banner, collect all of the company names and log the result.
+
+let companyNames = [];
+
+runners.forEach(function(item){
+   companyNames.push(item.company_name);
+    }
+);
+console.log(companyNames);
+
 
 // Problem 2
+//We need the runners names and email addresses to add to our mailing list. Compile a list and log the results.
+
+let emailAddresses = [];
+
+runners.forEach(function(item){
+   emailAddresses.push(`${item.first_name} ${item.last_name}, email: ${item.email}`);
+    }
+);
+console.log(emailAddresses);
 
 // Problem 3
+
+//We are generating thank you notes to all the attendees of the run. Take the note and populate the information with the given data and log the results.
+
+let thankYou = [];
+
+runners.forEach(function(item){
+   thankYou.push(`Hi ${item.first_name}! We would like to thank you for attending the 5th Annual 5k Fun Run. We appreciate the donation of $${item.donation}.00 from your company, ${item.company_name}. We hope to see you next year!`);
+    }
+);
+console.log(thankYou);
